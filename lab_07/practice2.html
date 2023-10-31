@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myParagraph {
+            padding: 20px;
+            border-style: solid;
+            margin: 20px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <p id="myParagraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div>
+        <label for="red">Red:</label>
+        <input type="text" id="red" name="red" placeholder="Enter red value">
+
+        <label for="green">Green:</label>
+        <input type="text" id="green" name="green" placeholder="Enter green value">
+
+        <label for="blue">Blue:</label>
+        <input type="text" id="blue" name="blue" placeholder="Enter blue value">
+
+        <button onclick="applyBorderColor()">Apply Border Color</button>
+
+        <label for="borderWidth">Border Width:</label>
+        <input type="range" id="borderWidth" name="borderWidth" min="0" max="20" step="1">
+    </div>
+
+    <script>
+        function applyBorderColor() {
+            const redValue = document.getElementById('red').value;
+            const greenValue = document.getElementById('green').value;
+            const blueValue = document.getElementById('blue').value;
+
+            const borderColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+
+            document.getElementById('myParagraph').style.borderColor = borderColor;
+        }
+
+        document.getElementById('borderWidth').addEventListener('input', function() {
+            const width = this.value;
+            document.getElementById('myParagraph').style.borderWidth = `${width}px`;
+        });
+    </script>
+</body>
+</html>
