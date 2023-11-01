@@ -1,0 +1,17 @@
+# Set the base image to use
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y g++
+
+# Create and set the working directory
+WORKDIR /app
+
+# Copy the C++ program into the container
+COPY matrix_manipulation.cpp .
+COPY matrix_input.txt .
+# Compile the C++ program
+RUN g++ -o matrix_manipulation matrix_manipulation.cpp
+
+# Set the command to run when the container starts
+CMD ["./matrix_manipulation"]
